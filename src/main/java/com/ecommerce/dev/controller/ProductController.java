@@ -39,15 +39,15 @@ public class ProductController {
 	}
 
 	@GetMapping("/list")
-	public List<Product> getAllProducts() {
-		return productRepository.findAll();
+	public ResponseEntity<List<Product>> getAllProducts() {
+		return ResponseEntity.status(HttpStatus.OK).body(productRepository.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public Product getProductById(@PathVariable Long id) {
+	public ResponseEntity<Product> getProductById(@PathVariable Long id) {
 		// return productRepository.getById(id); //retorna uma referencia da entity (não
 		// sei como usar isso)
-		return productRepository.findById(id).get();
+		return ResponseEntity.status(HttpStatus.OK).body(productRepository.findById(id).get());
 	}
 
 	@PutMapping("/{id}")
@@ -61,9 +61,9 @@ public class ProductController {
 	}
 
 	@DeleteMapping("/{id}")
-	public Product deleteProduct(@PathVariable Long id) {
+	public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
 		productRepository.deleteById(id);
-		return null;
+		return ResponseEntity.status(HttpStatus.OK).body("Produto deletado");
 	}
 
 }
