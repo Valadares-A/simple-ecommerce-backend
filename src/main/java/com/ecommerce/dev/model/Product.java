@@ -11,19 +11,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data // cria os metodos setter and getter automagicamente pra gente
-@Entity //Dizendo pro java que essa classe é uam entidade
+@Entity // Dizendo pro java que essa classe é uam entidade
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String description;
 	private String unit;
-	
+
 	public Product(String name, String description, String unit) {
 		super();
 		this.name = name;
@@ -73,7 +73,11 @@ public class Product {
 
 	public void setUnit(String unit) {
 		this.unit = unit;
-	}	
-	
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", unit=" + unit + "]";
+	}
 
 }
