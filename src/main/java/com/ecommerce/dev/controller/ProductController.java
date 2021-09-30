@@ -2,6 +2,7 @@ package com.ecommerce.dev.controller;
 
 import java.sql.Array;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,12 +41,17 @@ public class ProductController {
 		return productRepository.findAll();
 	}
 
+	@GetMapping("/{id}")
+	public Optional<Product> getProductById(@PathVariable Long id) {
+		// return productRepository.getById(id); //retorna uma referencia da entity (não
+		// sei como usar isso)
+		return productRepository.findById(id);
+	}
+
 	@DeleteMapping("/{id}")
 	public Product deleteProduct(@PathVariable Long id) {
-		System.out.println(id);
 		productRepository.deleteById(id);
 		return null;
-
 	}
 
 }
