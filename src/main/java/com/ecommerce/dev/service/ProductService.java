@@ -29,15 +29,13 @@ public class ProductService {
 		return productRepository.findById(id).get();
 	};
 
-	public Product editProduct(Long id, Product product) {
+	public Product updateProduct(Long id, Product product) {
 		Product auxProduct = productRepository.findById(id).get();
-		auxProduct.printEntity();
 		BeanUtils.copyProperties(product, auxProduct, "id");
-		auxProduct.printEntity();
 		return productRepository.save(auxProduct);
 	};
 
-	public String delete(Long id) {
+	public String deleteProduct(Long id) {
 		productRepository.deleteById(id);
 		return "Produto deletado";
 	};

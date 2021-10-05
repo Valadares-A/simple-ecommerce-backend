@@ -48,13 +48,13 @@ public class ProductController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long id) {
-		return ResponseEntity.status(HttpStatus.OK).body(productService.editProduct(id, product));
+		return ResponseEntity.status(HttpStatus.OK).body(productService.updateProduct(id, product));
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(productService.delete(id));
+			return ResponseEntity.status(HttpStatus.OK).body(productService.deleteProduct(id));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
