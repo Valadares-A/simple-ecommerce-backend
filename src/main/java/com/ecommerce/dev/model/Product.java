@@ -75,8 +75,7 @@ public class Product {
 		this.unit = unit;
 	}
 
-	@Override
-	public String toString() {
+	public String printEntity() {
 		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", unit=" + unit + "]";
 	}
 
